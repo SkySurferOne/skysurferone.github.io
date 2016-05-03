@@ -1,0 +1,32 @@
+/*!
+ * Theme Name: Damian Hanusiak Portfolio
+ * Author: Damian Hanusiak
+ * Version: 0.1
+ */
+
+/**
+ * Import vendors
+ */
+//@import "vendor/normalize";
+@import "vendor/bootstrap";
+
+/**
+ * Import helpers
+ */
+@import "helpers/mixins";
+@import "helpers/variables";
+
+/**
+ * Import components
+ */
+@import "component/default";
+@import "component/button";
+@import "component/tables";
+
+/**
+ * Import layout
+ */
+@import "layout/nav";
+@import "layout/header";
+@import "layout/main";
+@import "layout/footer";

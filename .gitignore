@@ -1,0 +1,14 @@
+### Windows ###
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+### Node ###
+/node_modules/
+npm-debug.log
+
+### brackets ###
+.brackets.json

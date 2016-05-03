@@ -1,0 +1,16 @@
+/* header */
+.header {
+    width: 100%;
+    height: 934px;
+    background: black url(../img/header.jpg) no-repeat 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.shadow {
+    color: black;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .5;
+}

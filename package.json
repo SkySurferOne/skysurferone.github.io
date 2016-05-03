@@ -1,0 +1,22 @@
+{
+  "name": "damian-hanusiak-portfolio",
+  "title": "Damian Hanusiak Portfolio",
+  "version": "1.0.0",
+  "description": "This is Damian Hanusiak Portfolio",
+  "author": "Damian Hanusiak",
+  "license": "UNLICENSED",
+  "copyright": "2016",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-clean-css": "^2.0.6",
+    "gulp-combine-media-queries": "~0.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "merge-stream": "~1.0.0"
+  }
+}
