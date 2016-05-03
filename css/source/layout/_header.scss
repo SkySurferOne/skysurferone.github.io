@@ -6,6 +6,59 @@
     background: black url(../img/header.jpg) no-repeat 50% 50%;
     background-attachment: fixed;
     background-size: cover;
+    z-index: 5;
+    
+    .wrapper {
+        position: absolute;
+        z-index: 100;
+        left: 50%;
+        top: 34%;
+        transform: translate(-50%, 0);
+        text-align: center;
+    }
+    
+    h1, 
+    h2 {
+        font-family: $Roboto;
+        font-weight: 500;
+        color: map-get($colors, white);
+        text-transform: uppercase;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 50px;
+        margin: 0;
+    }
+    
+    h1 {
+        font-size: 48px;
+        margin: 0px 0 8px 0;
+    }
+}
+
+.logo {
+    position: relative;
+    display: block;
+    margin-bottom: 24px;
+    
+    &:after,
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 121px;
+        background-color: map-get($colors, white);
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    &:before {
+       left: 115px;
+    }
+    &:after {
+       right: 115px;
+    }
 }
 
 .shadow {
@@ -13,6 +66,6 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: .5;
+    opacity: .6;
 }
 

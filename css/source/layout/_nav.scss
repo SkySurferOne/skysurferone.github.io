@@ -6,7 +6,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    //background-color: rgba(0, 0, 0, 0.46);
     
     ul {
         display: block;
@@ -30,8 +29,10 @@
         text-transform: uppercase;
         letter-spacing: 3px;
         line-height: 1;
+        transition: color .3s;
         &:hover {
-            //text-decoration: none;
+            text-decoration: none;
+            color: map-get($colors, primary);
         }
     }
 }
@@ -44,6 +45,21 @@
     font-size: 36px;
     margin-top: -5px;
     letter-spacing: 4px;
-    text-decoration: underline;
-    //border-bottom: map-get($colors, white) solid 3px;
+    position: relative;
+    
+    &:hover:after {
+        background-color: map-get($colors, primary);
+    }
+    
+    &:after {
+        content: "";
+        display: block;
+        width: 243px;
+        height: 3px;
+        background-color: map-get($colors, white);
+        margin-top: -3px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: background-color .3s;
+    }
 }

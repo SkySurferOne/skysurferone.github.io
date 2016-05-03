@@ -1,0 +1,16 @@
+.rect-btn {
+    display: inline-block;
+    text-transform: uppercase;
+    font: 400 16px $Lato;
+    letter-spacing: 3px;
+    color: map-get($colors, primary);
+    border: map-get($colors, primary) 2px solid;
+    padding: 10px 22px 12px 22px;
+    transition: background-color .3s;
+    
+    &:hover {
+        text-decoration: none;
+        color: map-get($colors, dark);
+        background-color: map-get($colors, primary);
+    }
+}

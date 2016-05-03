@@ -1421,6 +1421,24 @@ html {
   *zoom: 1;
 }
 
+.rect-btn {
+  display: inline-block;
+  text-transform: uppercase;
+  font: 400 16px Lato, Arial, sans-serif;
+  letter-spacing: 3px;
+  color: #f39c12;
+  border: #f39c12 2px solid;
+  padding: 10px 22px 12px 22px;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+.rect-btn:hover {
+  text-decoration: none;
+  color: #2c2b29;
+  background-color: #f39c12;
+}
+
 /* sections msc */
 .cut-top, .cut-down {
   position: absolute;
@@ -1529,6 +1547,13 @@ html {
   text-transform: uppercase;
   letter-spacing: 3px;
   line-height: 1;
+  -webkit-transition: color .3s;
+  transition: color .3s;
+}
+
+.nav a:hover {
+  text-decoration: none;
+  color: #f39c12;
 }
 
 .nav > .container {
@@ -1539,7 +1564,24 @@ html {
   font-size: 36px;
   margin-top: -5px;
   letter-spacing: 4px;
-  text-decoration: underline;
+  position: relative;
+}
+
+.nav .highlight:hover:after {
+  background-color: #f39c12;
+}
+
+.nav .highlight:after {
+  content: "";
+  display: block;
+  width: 243px;
+  height: 3px;
+  background-color: #fffcf4;
+  margin-top: -3px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
 }
 
 /* header */
@@ -1550,6 +1592,62 @@ html {
   background: black url(../img/header.jpg) no-repeat 50% 50%;
   background-attachment: fixed;
   background-size: cover;
+  z-index: 5;
+}
+
+.header .wrapper {
+  position: absolute;
+  z-index: 100;
+  left: 50%;
+  top: 34%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.header h1,
+.header h2 {
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 500;
+  color: #fffcf4;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.header h2 {
+  font-size: 50px;
+  margin: 0;
+}
+
+.header h1 {
+  font-size: 48px;
+  margin: 0px 0 8px 0;
+}
+
+.logo {
+  position: relative;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.logo:after, .logo:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 121px;
+  background-color: #fffcf4;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+.logo:before {
+  left: 115px;
+}
+
+.logo:after {
+  right: 115px;
 }
 
 .shadow {
@@ -1557,5 +1655,5 @@ html {
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: .5;
+  opacity: .6;
 }
