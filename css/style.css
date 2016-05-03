@@ -1421,6 +1421,78 @@ html {
   *zoom: 1;
 }
 
+/* sections msc */
+.cut-top, .cut-down {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 247px;
+}
+
+.cut-top {
+  top: 0;
+}
+
+.cut-top .rect-left,
+.cut-top .rect-right {
+  top: -160px;
+}
+
+.cut-top .rect-left:after,
+.cut-top .rect-right:after {
+  bottom: -10px;
+}
+
+.cut-down {
+  bottom: 0;
+}
+
+.cut-down .rect-left,
+.cut-down .rect-right {
+  bottom: -128px;
+}
+
+.cut-down .rect-left:after,
+.cut-down .rect-right:after {
+  top: -10px;
+}
+
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.rect-left, .rect-right {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background-color: white;
+}
+
+.rect-left:after, .rect-right:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: white;
+}
+
+.rect-left {
+  width: 50.05%;
+  left: 0;
+  -webkit-transform: skew(0deg, 14deg);
+          transform: skew(0deg, 14deg);
+}
+
+.rect-right {
+  right: 0;
+  -webkit-transform: skew(0deg, -14deg);
+          transform: skew(0deg, -14deg);
+}
+
 /**
  * Import layout
  */
@@ -1472,6 +1544,7 @@ html {
 
 /* header */
 .header {
+  position: relative;
   width: 100%;
   height: 934px;
   background: black url(../img/header.jpg) no-repeat 50% 50%;
