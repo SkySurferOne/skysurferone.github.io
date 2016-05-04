@@ -9,7 +9,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var cmq = require('gulp-combine-media-queries');
-//var minifyCss = require('gulp-minify-css');
+
 var minifyCss = require('gulp-clean-css');
 
 var rename = require('gulp-rename');
@@ -21,7 +21,6 @@ project.jsSourcePath = 'js/source/';
 project.jsVendorPath = project.jsSourcePath + 'vendor/';
 project.jsVendor = [
 			project.jsVendorPath + 'jquery.min.js',
-			//project.jsVendorPath + 'bootstrap.js'
 		];
 
 // Lint Task

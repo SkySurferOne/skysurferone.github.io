@@ -30,3 +30,7 @@ html {
     *zoom: 1;
 }
 
+/* general */
+body {
+    background-color: map-get($colors, white);
+}

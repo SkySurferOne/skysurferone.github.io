@@ -1,1 +1,1 @@
-Copyright � 2016 Damian Hanusiak
+﻿Copyright © 2016 Damian Hanusiak
