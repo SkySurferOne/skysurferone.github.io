@@ -1,0 +1,19 @@
+// pie charts
+@mixin make-charts($how-many, $percents...) { 
+	@for $i from 1 through $how-many {
+		.chart-#{$i} { 
+			 & > .progress-indicator { 
+				transform: rotate( nth($percents, $i) * 3.6deg ); 
+			 }
+            .progress-indicator {
+                 @if nth($percents, $i) <= 50 {
+                     clip: rect(0px, $ring-width/2, $ring-width, 0px);
+                     border-color: map-get($colors, white);
+                 } @else {
+                     clip: rect(0px, $ring-width, $ring-width, $ring-width/2);
+                     border-color: map-get($colors, piechart);
+                 }
+            }
+		}
+	}
+}

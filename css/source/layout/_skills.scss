@@ -1,0 +1,85 @@
+/* skills */
+.skills {
+    background: black url(../img/skills.jpg) no-repeat 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 316px;
+    padding-bottom: 328px;
+    
+    h2 {
+        color: map-get($colors, white);
+        margin: 0 0 141px 0;
+        text-align: center;
+        
+        &:after {
+            background-color: map-get($colors, white);
+            margin-top: 30px;
+        }
+    }
+}
+
+.skills-slider {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* pie-charts */
+.chart-box {
+    text-align: center;
+    
+    h3 {
+        font: 400 31px $Lato;
+        color: map-get($colors, white);
+        text-transform: uppercase;
+        margin-top: 21px;
+        margin-bottom: 5px;
+    }
+    
+    p {
+        font: 300 16px $OpenSans;
+        color: map-get($colors, white);
+        margin: 0;
+        line-height: 1.3;
+    }
+}
+
+@include make-charts(3, 85, 65, 70);
+
+.progress-ring,
+.progress-usage,
+.progress-indicator {
+  width: $ring-width;
+  height: $ring-width;
+  display: block;
+  border: $ring-border-width solid map-get($colors, white);
+  border-radius: 130px;
+}
+
+.progress-ring {
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
+	border-color: map-get($colors, white);
+	
+	.progress-usage,
+	.progress-indicator {
+	  position: absolute;
+	  top: -$ring-border-width;
+	  left: -$ring-border-width;
+	}
+
+	.progress-usage {
+		border-color: map-get($colors, piechart);
+		clip: rect(0px, $ring-width/2, $ring-width, 0px);
+	}
+	
+	span {
+		font: 300 55px $Lato;
+		color: map-get($colors, white);
+		line-height: $ring-width - 2*$ring-border-width;
+	}
+	
+}

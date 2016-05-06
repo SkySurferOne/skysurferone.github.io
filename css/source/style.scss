@@ -13,8 +13,8 @@
 /**
  * Import helpers
  */
-@import "helpers/mixins";
 @import "helpers/variables";
+@import "helpers/mixins";
 
 /**
  * Import components
@@ -29,4 +29,5 @@
 @import "layout/nav";
 @import "layout/header";
 @import "layout/about";
+@import "layout/skills";
 @import "layout/footer";

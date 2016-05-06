@@ -1,6 +1,7 @@
+/* about */
 .about {
     padding-top: 104px;
-    padding-bottom: 86px;
+    padding-bottom: 52px;
 }
 
 .img-wrap {
@@ -16,21 +17,11 @@
     text-align: center;
     
     h2 {
-        font: 600 55px $OpenSans;
         color: map-get($colors, primary);
-        text-transform: uppercase;
         margin: 0 0 50px 0;
-        position: relative;
         
         &:after {
-            content: "";
-            display: block;
             background-color: map-get($colors, primary);
-            width: 102px;
-            height: 8px;
-            position: absolute;
-            left: 50%;
-            transform: translate(-50%, 0);
             margin-left: -91px;
             margin-top: 5px;
         }
