@@ -1,0 +1,16 @@
+.experience {
+    background-color: map-get($colors, white);
+    padding-top: 80px;
+    
+    h2 {
+        color: map-get($colors, text-experience);
+        margin: 0 0 141px 0;
+        text-align: center;
+        
+        &:after {
+            background-color: map-get($colors, text-experience);
+            margin-top: 21px;
+        }
+    }
+    
+}

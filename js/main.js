@@ -1,1 +1,1 @@
-!function(e){"use strict";e(document).ready(function(){console.log("DOM is ready!")})}(jQuery);
+var app=function(r){"use strict";function e(){console.log("DOM is ready!"),l=r(".skills-slider"),l.bxSlider(n)}var o=r(document),l=null;o.ready(e);var n={auto:!0,mode:"fade",controls:!1};return{}}(jQuery);

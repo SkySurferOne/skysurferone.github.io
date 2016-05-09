@@ -1457,6 +1457,7 @@ section h2 {
   font: 600 55px "Open Sans", Arial, sans-serif;
   text-transform: uppercase;
   position: relative;
+  letter-spacing: 2px;
 }
 
 section h2:after {
@@ -1719,7 +1720,7 @@ section:nth-child(2n+2) {
 
 .about-text h2:after {
   background-color: #f39c12;
-  margin-left: -91px;
+  margin-left: -99px;
   margin-top: 5px;
 }
 
@@ -1734,7 +1735,7 @@ section:nth-child(2n+2) {
   background-attachment: fixed;
   background-size: cover;
   padding-top: 316px;
-  padding-bottom: 328px;
+  padding-bottom: 290px;
 }
 
 .skills h2 {
@@ -1748,10 +1749,39 @@ section:nth-child(2n+2) {
   margin-top: 30px;
 }
 
-.skills-slider ul {
+.skills-slider {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.bx-pager {
+  text-align: center;
+  margin-top: 19px;
+}
+
+.bx-pager .bx-pager-item {
+  display: inline-block;
+  margin-right: 24px;
+}
+
+.bx-pager .bx-pager-item:last-of-type {
+  margin-right: 0;
+}
+
+.bx-pager .bx-pager-item a {
+  cursor: pointer;
+  text-indent: -9000px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #fffcf4;
+  border-radius: 50%;
+  outline: 0;
+}
+
+.bx-pager .bx-pager-item a:hover, .bx-pager .bx-pager-item a.active {
+  background-color: #fffcf4;
 }
 
 /* pie-charts */
@@ -1804,6 +1834,66 @@ section:nth-child(2n+2) {
   border-color: #e56e34;
 }
 
+.chart-4 > .progress-indicator {
+  -webkit-transform: rotate(72deg);
+          transform: rotate(72deg);
+}
+
+.chart-4 .progress-indicator {
+  clip: rect(0px, 126px, 252px, 0px);
+  border-color: #fffcf4;
+}
+
+.chart-5 > .progress-indicator {
+  -webkit-transform: rotate(54deg);
+          transform: rotate(54deg);
+}
+
+.chart-5 .progress-indicator {
+  clip: rect(0px, 126px, 252px, 0px);
+  border-color: #fffcf4;
+}
+
+.chart-6 > .progress-indicator {
+  -webkit-transform: rotate(108deg);
+          transform: rotate(108deg);
+}
+
+.chart-6 .progress-indicator {
+  clip: rect(0px, 126px, 252px, 0px);
+  border-color: #fffcf4;
+}
+
+.chart-7 > .progress-indicator {
+  -webkit-transform: rotate(216deg);
+          transform: rotate(216deg);
+}
+
+.chart-7 .progress-indicator {
+  clip: rect(0px, 252px, 252px, 126px);
+  border-color: #e56e34;
+}
+
+.chart-8 > .progress-indicator {
+  -webkit-transform: rotate(144deg);
+          transform: rotate(144deg);
+}
+
+.chart-8 .progress-indicator {
+  clip: rect(0px, 126px, 252px, 0px);
+  border-color: #fffcf4;
+}
+
+.chart-9 > .progress-indicator {
+  -webkit-transform: rotate(162deg);
+          transform: rotate(162deg);
+}
+
+.chart-9 .progress-indicator {
+  clip: rect(0px, 126px, 252px, 0px);
+  border-color: #fffcf4;
+}
+
 .progress-ring,
 .progress-usage,
 .progress-indicator {
@@ -1811,7 +1901,7 @@ section:nth-child(2n+2) {
   height: 252px;
   display: block;
   border: 10px solid #fffcf4;
-  border-radius: 130px;
+  border-radius: 50%;
 }
 
 .progress-ring {
@@ -1837,4 +1927,20 @@ section:nth-child(2n+2) {
   font: 300 55px Lato, Arial, sans-serif;
   color: #fffcf4;
   line-height: 232px;
+}
+
+.experience {
+  background-color: #fffcf4;
+  padding-top: 80px;
+}
+
+.experience h2 {
+  color: #3c434c;
+  margin: 0 0 141px 0;
+  text-align: center;
+}
+
+.experience h2:after {
+  background-color: #3c434c;
+  margin-top: 21px;
 }

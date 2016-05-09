@@ -21,6 +21,7 @@ project.jsSourcePath = 'js/source/';
 project.jsVendorPath = project.jsSourcePath + 'vendor/';
 project.jsVendor = [
 			project.jsVendorPath + 'jquery.min.js',
+            project.jsVendorPath + 'jquery.bxslider.js',
 		];
 
 // Lint Task

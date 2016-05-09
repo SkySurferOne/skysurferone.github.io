@@ -10,6 +10,7 @@ section {
         font: 600 55px $OpenSans;
         text-transform: uppercase;
         position: relative;
+        letter-spacing: 2px;
         
         &:after {
             content: "";

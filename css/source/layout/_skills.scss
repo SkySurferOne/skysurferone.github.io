@@ -4,7 +4,7 @@
     background-attachment: fixed;
     background-size: cover;
     padding-top: 316px;
-    padding-bottom: 328px;
+    padding-bottom: 290px;
     
     h2 {
         color: map-get($colors, white);
@@ -19,10 +19,38 @@
 }
 
 .skills-slider {
-    ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bx-pager {
+    text-align: center;
+    margin-top: 19px;
+    
+    .bx-pager-item {
+        display: inline-block;
+        margin-right: 24px;
+        
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+    
+    .bx-pager-item  a {
+        cursor: pointer;
+        text-indent: -9000px;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border: 1px solid map-get($colors, white);
+        border-radius: 50%;
+        outline: 0;
+        
+        &:hover,
+        &.active {
+            background-color: map-get($colors, white);
+        }
     }
 }
 
@@ -46,7 +74,7 @@
     }
 }
 
-@include make-charts(3, 85, 65, 70);
+@include make-charts(9, 85, 65, 70, 20, 15, 30, 60, 40, 45);
 
 .progress-ring,
 .progress-usage,
@@ -55,7 +83,7 @@
   height: $ring-width;
   display: block;
   border: $ring-border-width solid map-get($colors, white);
-  border-radius: 130px;
+  border-radius: 50%;
 }
 
 .progress-ring {
