@@ -61,3 +61,20 @@
     }
 }
 
+@media screen and (max-width: $break-large) {
+    .header {
+        h2 {
+            font-size: 40px;
+        }
+    }
+    
+    .logo {
+        &:after {
+            right: 58px;
+        }
+        &:before {
+            left: 58px;
+        }
+    }
+}
+

@@ -63,3 +63,25 @@
         transition: background-color .3s;
     }
 }
+
+@media screen and (max-width: $break-larger) {
+    .nav {
+        font-size: 26px;
+        
+        &  > .container {
+            padding: 43px 0 0 22px;
+        }
+        
+        .highlight {
+            font-size: inherit;
+            &:after {
+                width: 187px;
+            }
+        }
+        
+        li {
+            margin-right: 30px;
+        }
+    }
+}
+

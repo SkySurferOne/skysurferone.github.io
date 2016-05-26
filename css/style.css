@@ -1631,6 +1631,24 @@ section:nth-child(2n+2) {
   transition: background-color .3s;
 }
 
+@media screen and (max-width: 1200px) {
+  .nav {
+    font-size: 26px;
+  }
+  .nav > .container {
+    padding: 43px 0 0 22px;
+  }
+  .nav .highlight {
+    font-size: inherit;
+  }
+  .nav .highlight:after {
+    width: 187px;
+  }
+  .nav li {
+    margin-right: 30px;
+  }
+}
+
 /* header */
 .header {
   position: relative;
@@ -1695,6 +1713,18 @@ section:nth-child(2n+2) {
 
 .logo:after {
   right: 115px;
+}
+
+@media screen and (max-width: 1120px) {
+  .header h2 {
+    font-size: 40px;
+  }
+  .logo:after {
+    right: 58px;
+  }
+  .logo:before {
+    left: 58px;
+  }
 }
 
 /* about */
