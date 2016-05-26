@@ -1,10 +1,11 @@
+/* experience */
 .experience {
     background-color: map-get($colors, white);
     padding-top: 80px;
     
     h2 {
         color: map-get($colors, text-experience);
-        margin: 0 0 141px 0;
+        margin: 0 0 99px 0;
         text-align: center;
         
         &:after {
@@ -13,4 +14,170 @@
         }
     }
     
+}
+
+.timeline {
+    position: relative;
+    padding-bottom: 85px;
+    
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background-color: map-get($colors, timeline-header-bg);;
+        height: 100%;
+        width: 4px;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+    
+    figcaption {
+        position: relative;
+        z-index: 10;
+        margin-bottom: 157px;
+        text-align: center;
+        width: 350px;
+        line-height: 66px;
+        font-family: $Roboto;
+        font-weight: 400;
+        font-size: 40px;
+        text-transform: uppercase;
+        color: map-get($colors, timeline-header-text);
+        background-color: map-get($colors, timeline-header-bg);
+        border-radius: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        
+        &:after {
+            content: '';
+            display: block;
+            width: 41px;
+            height: 41px;
+            border-radius: 100%;
+            background-color: map-get($colors, primary); 
+            position: absolute;
+            bottom: -64px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 5;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        &:after {
+            content: '';
+            display: block;
+            width: 41px;
+            height: 41px;
+            border-radius: 100%;
+            background-color: map-get($colors, primary); 
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 5;
+            background-image: url(../img//bookmark-cion-kopia.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+    }
+    
+    li {
+        position: relative;
+        text-align: left;
+    }
+    
+    li:nth-of-type(odd) {
+        article {
+            padding-left: 54px;
+        }
+    }
+    
+    li:nth-of-type(even) {
+        text-align: right;
+        
+        article {
+            padding-right: 54px;
+        }
+    }
+    
+}
+
+.timeline article {
+    color: map-get($colors, text-experience);
+    position: static;
+    
+    .title {
+        font-family: $OpenSans;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 1;
+        margin: 0 0 2px;
+    }
+    
+    .subtitle {
+        font-family: $OpenSans;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0 0 2px;
+    }
+    
+    .peroid {
+        font-family: $OpenSans;
+        font-size: 16px;
+        font-weight: 300;
+        display: block;
+        margin: 0 0 13px;
+        line-height: 1.3;
+    }
+    
+    p:last-of-type {
+        font-family: $Lato;
+        font-size: 16px;
+        font-weight: 300;
+        margin: 0;
+    }
+    
+    &:after {
+        content: "";
+        background-color: #f39c12;
+        border-radius: 100%;
+        height: 21px;
+        width: 21px;
+        left: 50%;
+        display: block;
+        position: absolute;
+        top: 3px;
+        transform: translate(-50%, 0);
+        z-index: 5;
+    }
+    
+}
+
+.timeline-education {
+    margin-bottom: 32px;
+    
+    figcaption {
+        
+        &:after {
+            background-image: url(../img/book-icon.png);
+        }
+    }
+}
+
+.timeline-experience {
+    figcaption {
+        
+        &:after {
+            background-image: url(../img/bag-icon.png);
+        }
+    }
 }

@@ -1,0 +1,114 @@
+/* contact */
+.contact {
+    background-color: map-get($colors, primary);
+    padding-top: 53px;
+    
+    h2 {
+        color: map-get($colors, white);
+        margin: 0 0 147px 0;
+        text-align: center;
+        
+        &:after {
+            background-color: map-get($colors, white);
+            margin-top: 25px;
+            width: 208px;
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+    color: map-get($colors, white);
+    text-transform: uppercase;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: map-get($colors, white);
+    text-transform: uppercase;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: map-get($colors, white); 
+    text-transform: uppercase;
+}
+
+:-ms-input-placeholder {  
+    color: map-get($colors, white);  
+    text-transform: uppercase;
+}
+
+#contact-form {
+    padding-left: 25px;
+    padding-right: 25px;
+    
+    input, 
+    textarea {
+        display: block;
+        width: 100%;
+        border: 3px solid map-get($colors, white);
+        background-color: map-get($colors, primary);
+        color: map-get($colors, white);
+        font-weight: 700;
+        padding-left: 25px;
+        font-family: $Lato;
+        font-size: 22px;
+        margin-bottom: 18px;
+        line-height: 43px;
+        outline: none;
+    }
+    
+    #message {
+        line-height: 1.3;
+        padding-top: 9px;
+    }
+    
+    #send {
+        margin: 0 auto 76px;
+        width: 220px;
+        text-align: center;
+        padding: 0;
+        text-transform: uppercase;
+         transition: background-color .3s;
+        
+        &:hover {
+            color: map-get($colors, primary);
+            background-color: map-get($colors, white);
+        }
+    }
+    
+}
+
+.social {
+    text-align: center;
+    margin-bottom: 117px;
+    
+    a {
+        outline: none;
+        display: inline-block;
+        margin-right: 45px;
+        height: 64px;
+        &:last-of-type {
+            margin-right: 0;
+        }
+    }
+    
+    img {
+        display: inline-block;
+        height: 64px; 
+        transition: all .1s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    
+    #linkedin {
+         width: 64px;
+    }
+    
+    #deviantart {
+    
+    }
+    
+    #github {
+        width: 64px;
+    }
+}

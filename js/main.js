@@ -1,1 +1,1 @@
-var app=function(r){"use strict";function e(){console.log("DOM is ready!"),l=r(".skills-slider"),l.bxSlider(n)}var o=r(document),l=null;o.ready(e);var n={auto:!0,mode:"fade",controls:!1};return{}}(jQuery);
+var app=function(e){"use strict";function i(){console.log("DOM is ready!"),d=e(".skills-slider"),l=e(".portfolio-slider"),d.bxSlider(o),l.bxSlider(s)}var l,r=e(document),d=null;r.ready(i);var o={auto:!0,mode:"fade",controls:!1},s={slideWidth:475,minSlides:2,maxSlides:2,moveSlides:1,slideMargin:30,pager:!1,auto:!0};return{}}(jQuery);

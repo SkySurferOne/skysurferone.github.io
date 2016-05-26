@@ -1,0 +1,124 @@
+/* portfolio */
+.portfolio {
+    background: black url(../img/portfolio.jpg) no-repeat 50% 50%;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 291px;
+    padding-bottom: 314px;
+    
+    h2 {
+        color: map-get($colors, white);
+        margin: 0 0 158px 0;
+        text-align: center;
+        
+        &:after {
+            background-color: map-get($colors, white);
+            margin-top: 30px;
+        }
+    }
+    
+    .shadow {
+        opacity: .1;
+    }
+    
+    .cut-down {
+        .rect-left, 
+        .rect-right {
+            background-color: map-get($colors, primary);
+            &:after {
+                background-color: map-get($colors, primary);
+            }
+        }
+    }
+}
+
+.bx-wrapper {
+    position: relative;
+}
+
+.portfolio-slider-wrapper {
+    position: relative;
+    color: map-get($colors, text-portfolio);
+    padding-left: 30px;
+    padding-right: 30px;
+    
+    .bx-prev,
+    .bx-next {
+        height: 65px;
+        width: 65px;
+        display: block;
+        border: 3px solid white;
+        border-radius: 100%;
+        text-indent: -9000px;
+        outline: none;
+        position: absolute;
+        top: 50%;
+        //transform: translate(0, -14%);
+        background-repeat: no-repeat;
+        &:hover {
+            background-color: rgba(255, 255, 255, .1);
+        }
+    }
+    
+    .bx-prev {
+        background-image: url(../img/left-arrow.png);
+        background-position: 47% 50%;
+        left: -97px;
+    }
+    
+    .bx-next {
+        background-image: url(../img/right-arrow.png);
+        background-position: 53% 50%;
+        right: -97px;
+    }
+}
+
+.portfolio-slider {
+    height: 100%;
+    //max-height: 537px;
+    
+    article {
+        background-color:  map-get($colors, white);
+        height: 537px;
+        //box-shadow: 0px 3px 7px 0.00px rgba(0, 0, 0, 0.35);
+        text-align: center;
+        //margin-top: 2px;
+    }
+    
+    .img-wrap {
+        max-width: 475px;
+        overflow: hidden;
+    }
+    
+    img {
+        display: block;
+        width: 475px;
+        transition: all .2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    
+    h3 {
+        font-family: $OpenSans;
+        font-size: 31px;
+        line-height: 1;
+        margin: 20px 0 0;
+        &:after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 100%;
+            max-width: 340px;
+            background-color: map-get($colors, separator);
+            margin: 17px auto 13px;
+        }
+    }
+    
+    p {
+        font-family: $Lato;
+        font-size: 16px;
+        padding: 0 15px 41px 15px;
+        margin: 0;
+    }
+}
