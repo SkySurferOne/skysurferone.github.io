@@ -15,6 +15,8 @@ var minifyCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var merge = require('merge-stream');
 
+var browserSync = require('browser-sync').create();
+
 // Config
 var project = {};
 project.jsSourcePath = 'js/source/';
@@ -40,8 +42,8 @@ gulp.task('sass', function() {
 		//.pipe(sourcemaps.init({loadMaps: true}))
 			.pipe(autoprefixer())
 		//.pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('css'));
-
+        .pipe(gulp.dest('css'))
+        .pipe(browserSync.stream());
 });
 
 // Compile Sass, Prefix It And Minify
@@ -84,16 +86,26 @@ gulp.task('scripts', function() {
 gulp.task('scripts-dev', function() {
 	return gulp.src(project.jsSourcePath + '*.js')
 		.pipe(uglify())
-		.pipe(gulp.dest('js'));
+		.pipe(gulp.dest('js'))
+        .pipe(browserSync.reload({ stream: true }));
+});
 
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+    gulp.watch("./*.html").on('change', browserSync.reload);
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
 	 gulp.watch(project.jsSourcePath + '*.js', ['jsLint', 'scripts-dev']);
 	 gulp.watch('css/source/**/*.scss', ['sass']);
-
 });
 
 gulp.task('default', ['jsLint', 'sass-prod', 'scripts']);
 gulp.task('dev', ['jsLint', 'sass', 'scripts', 'watch']);
+gulp.task('dev-serve', ['browser-sync', 'dev']);
