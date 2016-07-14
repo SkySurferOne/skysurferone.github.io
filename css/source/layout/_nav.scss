@@ -35,6 +35,7 @@
             color: map-get($colors, primary);
         }
     }
+    
 }
 
 .nav > .container {
@@ -47,11 +48,11 @@
     letter-spacing: 4px;
     position: relative;
     
-    &:hover:after {
+    &:hover::after {
         background-color: map-get($colors, primary);
     }
     
-    &:after {
+    &::after {
         content: "";
         display: block;
         width: 243px;
@@ -61,6 +62,83 @@
         margin-left: auto;
         margin-right: auto;
         transition: background-color .3s;
+    }
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+$bar-height: 3px;
+$bar-margin: 9px;
+$bar-margin-hover: 11px;
+$hamburger-width: 40px;
+$hamburger-hover-time: .2s;
+.mobile-menu-btn {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    user-select: none;
+    height: $hamburger-width;
+    width: $hamburger-width;
+    position: relative;
+    
+    span {
+        background-color: map-get($colors, white);
+        height: $bar-height;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: $hamburger-width;
+        
+            &::after,
+            &::before {
+                content: "";
+                background-color: map-get($colors, white);
+                height: $bar-height;
+                left: 0;
+                position: absolute;
+                width: $hamburger-width;
+                transition: bottom $hamburger-hover-time, top $hamburger-hover-time, transform $hamburger-hover-time;
+            }
+
+            &::after {
+                bottom: -$bar-margin;
+            }
+
+            &::before {
+                top: -$bar-margin;
+            }
+    }
+    
+    &:hover span {
+        &::after {
+            bottom: -$bar-margin-hover;
+        }
+        
+        &::before {
+            top: -$bar-margin-hover;
+        }
+    }
+    
+     &.active span {
+        width: 0;
+
+        &::after {
+            bottom: 0;
+            transform: rotateZ(-45deg);
+        }
+
+        &::before {
+            top: 0;
+            transform: rotateZ(45deg);
+        }   
     }
 }
 
@@ -74,7 +152,7 @@
         
         .highlight {
             font-size: inherit;
-            &:after {
+            &::after {
                 width: 187px;
             }
         }
@@ -82,6 +160,63 @@
         li {
             margin-right: 30px;
         }
+    }
+}
+
+$menu-vertical-width: 240px;
+$menu-push-transition-time: .3s;
+@media screen and (max-width: $break-medium) {
+    body {
+        overflow-x: hidden;
+	    position: relative;
+	    left: 0;
+        transition: all, $menu-push-transition-time, ease;
+    }
+    
+    .push-toleft {
+	    left: -$menu-vertical-width;
+    }
+    
+    .nav {
+        background: map-get($colors, white);
+        width: $menu-vertical-width;
+        position: fixed;
+        height: 100%;
+        top: 0;
+        left: auto;
+        right: -$menu-vertical-width;
+        z-index: 1001;
+        transition: right, $menu-push-transition-time, ease;
+
+        &.open {
+            right: 0px;
+        }
+
+        li {
+            float: none;
+            margin-bottom: 8px;
+            margin-right: 0;
+        }
+
+        .highlight {
+            margin-top: 0;
+            &::after {
+                display: none;
+            }
+        }
+        
+        a {
+             color: map-get($colors, timeline-header-text);
+        }
+        
+        .container {
+            width: auto;
+        }
+    }
+    
+    .mobile-menu {
+        display: block;
+        padding-top: 43px;
     }
 }
 

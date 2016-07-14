@@ -1426,6 +1426,10 @@ body {
   background-color: #fffcf4;
 }
 
+a:focus {
+  text-decoration: none;
+}
+
 /* buttons */
 .rect-btn {
   display: inline-block;
@@ -1471,7 +1475,7 @@ section h2:after {
           transform: translate(-50%, 0);
 }
 
-section:nth-child(2n+2) {
+section:nth-of-type(2n+2) {
   z-index: 9;
 }
 
@@ -1614,11 +1618,11 @@ section:nth-child(2n+2) {
   position: relative;
 }
 
-.nav .highlight:hover:after {
+.nav .highlight:hover::after {
   background-color: #f39c12;
 }
 
-.nav .highlight:after {
+.nav .highlight::after {
   content: "";
   display: block;
   width: 243px;
@@ -1631,6 +1635,84 @@ section:nth-child(2n+2) {
   transition: background-color .3s;
 }
 
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+}
+
+.mobile-menu-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  height: 40px;
+  width: 40px;
+  position: relative;
+}
+
+.mobile-menu-btn span {
+  background-color: #fffcf4;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  width: 40px;
+}
+
+.mobile-menu-btn span::after, .mobile-menu-btn span::before {
+  content: "";
+  background-color: #fffcf4;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  width: 40px;
+  -webkit-transition: bottom 0.2s, top 0.2s, -webkit-transform 0.2s;
+  transition: bottom 0.2s, top 0.2s, -webkit-transform 0.2s;
+  transition: bottom 0.2s, top 0.2s, transform 0.2s;
+  transition: bottom 0.2s, top 0.2s, transform 0.2s, -webkit-transform 0.2s;
+}
+
+.mobile-menu-btn span::after {
+  bottom: -9px;
+}
+
+.mobile-menu-btn span::before {
+  top: -9px;
+}
+
+.mobile-menu-btn:hover span::after {
+  bottom: -11px;
+}
+
+.mobile-menu-btn:hover span::before {
+  top: -11px;
+}
+
+.mobile-menu-btn.active span {
+  width: 0;
+}
+
+.mobile-menu-btn.active span::after {
+  bottom: 0;
+  -webkit-transform: rotateZ(-45deg);
+          transform: rotateZ(-45deg);
+}
+
+.mobile-menu-btn.active span::before {
+  top: 0;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
 @media screen and (max-width: 1200px) {
   .nav {
     font-size: 26px;
@@ -1641,11 +1723,60 @@ section:nth-child(2n+2) {
   .nav .highlight {
     font-size: inherit;
   }
-  .nav .highlight:after {
+  .nav .highlight::after {
     width: 187px;
   }
   .nav li {
     margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  body {
+    overflow-x: hidden;
+    position: relative;
+    left: 0;
+    -webkit-transition: all, 0.3s, ease;
+    transition: all, 0.3s, ease;
+  }
+  .push-toleft {
+    left: -240px;
+  }
+  .nav {
+    background: #fffcf4;
+    width: 240px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: auto;
+    right: -240px;
+    z-index: 1001;
+    -webkit-transition: right, 0.3s, ease;
+    transition: right, 0.3s, ease;
+  }
+  .nav.open {
+    right: 0px;
+  }
+  .nav li {
+    float: none;
+    margin-bottom: 8px;
+    margin-right: 0;
+  }
+  .nav .highlight {
+    margin-top: 0;
+  }
+  .nav .highlight::after {
+    display: none;
+  }
+  .nav a {
+    color: #6e6e6e;
+  }
+  .nav .container {
+    width: auto;
+  }
+  .mobile-menu {
+    display: block;
+    padding-top: 43px;
   }
 }
 
@@ -2049,7 +2180,7 @@ section:nth-child(2n+2) {
   -webkit-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
   z-index: 5;
-  background-image: url(../img//bookmark-cion-kopia.png);
+  background-image: url(../img/bookmark-cion-kopia.png);
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
@@ -2132,6 +2263,33 @@ section:nth-child(2n+2) {
 
 .timeline-experience figcaption:after {
   background-image: url(../img/bag-icon.png);
+}
+
+@media screen and (max-width: 991px) {
+  .timeline article {
+    padding-left: 54px;
+    padding-right: 54px;
+  }
+  .timeline li {
+    margin-bottom: 60px;
+  }
+  .timeline li:nth-of-type(even) {
+    text-align: left;
+  }
+  .timeline li:last-of-type {
+    margin-bottom: 0;
+  }
+  .timeline:after {
+    display: none;
+  }
+  .timeline article:after,
+  .timeline ul:after,
+  .timeline figcaption:after {
+    display: none;
+  }
+  .timeline figcaption {
+    margin-bottom: 90px;
+  }
 }
 
 /* portfolio */

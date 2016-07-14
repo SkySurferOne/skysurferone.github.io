@@ -24,6 +24,8 @@ project.jsVendorPath = project.jsSourcePath + 'vendor/';
 project.jsVendor = [
 			project.jsVendorPath + 'jquery.min.js',
             project.jsVendorPath + 'jquery.bxslider.js',
+            project.jsVendorPath + 'jquery.waypoints.js',
+            project.jsVendorPath + 'jquery.easing.js',
 		];
 
 // Lint Task
@@ -108,4 +110,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['jsLint', 'sass-prod', 'scripts']);
 gulp.task('dev', ['jsLint', 'sass', 'scripts', 'watch']);
-gulp.task('dev-serve', ['browser-sync', 'dev']);
+gulp.task('dev-serve', ['dev', 'browser-sync']);
