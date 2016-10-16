@@ -42,7 +42,7 @@
         line-height: 66px;
         font-family: $Roboto;
         font-weight: 400;
-        font-size: 40px;
+        font-size: 2.5em;
         text-transform: uppercase;
         color: map-get($colors, timeline-header-text);
         background-color: map-get($colors, timeline-header-bg);
@@ -117,7 +117,7 @@
     
     .title {
         font-family: $OpenSans;
-        font-size: 30px;
+        font-size: 1.875em;
         font-weight: 600;
         line-height: 1;
         margin: 0 0 2px;
@@ -125,14 +125,14 @@
     
     .subtitle {
         font-family: $OpenSans;
-        font-size: 22px;
+        font-size: 1.375em;
         font-weight: 400;
         margin: 0 0 2px;
     }
     
     .peroid {
         font-family: $OpenSans;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 300;
         display: block;
         margin: 0 0 13px;
@@ -141,7 +141,7 @@
     
     p:last-of-type {
         font-family: $Lato;
-        font-size: 16px;
+        font-size: 1em;
         font-weight: 300;
         margin: 0;
     }

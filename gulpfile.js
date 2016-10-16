@@ -26,6 +26,7 @@ project.jsVendor = [
             project.jsVendorPath + 'jquery.bxslider.js',
             project.jsVendorPath + 'jquery.waypoints.js',
             project.jsVendorPath + 'jquery.easing.js',
+            project.jsVendorPath + 'jquery.debouncedresize.js',
 		];
 
 // Lint Task

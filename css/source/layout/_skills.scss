@@ -59,7 +59,7 @@
     text-align: center;
     
     h3 {
-        font: 400 31px $Lato;
+        font: 400 1.938em $Lato;
         color: map-get($colors, white);
         text-transform: uppercase;
         margin-top: 21px;
@@ -67,7 +67,7 @@
     }
     
     p {
-        font: 300 16px $OpenSans;
+        font: 300 1em $OpenSans;
         color: map-get($colors, white);
         margin: 0;
         line-height: 1.3;
@@ -105,9 +105,18 @@
 	}
 	
 	span {
-		font: 300 55px $Lato;
+		font: 300 3.438em $Lato;
 		color: map-get($colors, white);
 		line-height: $ring-width - 2*$ring-border-width;
 	}
 	
+}
+
+@media screen and (max-width: $break-medium) {
+    .chart-box {
+        margin-bottom: 40px;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
 }

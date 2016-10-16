@@ -12,6 +12,9 @@ $colors: (
     dark: #2c2b29
 );
 
+// general 
+$baseFontSize: 16px;
+
 // fonts
 $font-fallback: Arial, sans-serif;
 $Roboto: Roboto, $font-fallback;
@@ -27,3 +30,22 @@ $break-larger: 1200px;
 $break-large: 1120px;
 $break-medium: 991px;
 $break-small: 750px;
+
+// bt-breakpoints
+$screen-xs-max: 767px;
+$screen-sm-min: 768px;
+$screen-sm-max: 991px;
+$screen-md-min: 992px;
+$screen-md-max: 1199px;
+$screen-lg-min: 1200px;
+
+// mobile menu button
+$bar-height: 3px;
+$bar-margin: 9px;
+$bar-margin-hover: 11px;
+$hamburger-width: 40px;
+$hamburger-hover-time: .2s;
+
+// push menu
+$menu-vertical-width: 240px;
+$menu-push-transition-time: .3s;

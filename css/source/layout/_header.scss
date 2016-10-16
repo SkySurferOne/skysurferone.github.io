@@ -27,12 +27,12 @@
     }
     
     h2 {
-        font-size: 50px;
+        font-size: 3.125em;
         margin: 0;
     }
     
     h1 {
-        font-size: 48px;
+        font-size: 3em;
         margin: 0px 0 8px 0;
     }
 }
@@ -64,7 +64,7 @@
 @media screen and (max-width: $break-large) {
     .header {
         h2 {
-            font-size: 40px;
+            font-size: 2.5em;
         }
     }
     

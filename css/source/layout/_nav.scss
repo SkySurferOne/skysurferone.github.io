@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    transition: background-color, .5s;
     
     ul {
         display: block;
@@ -55,13 +56,42 @@
     &::after {
         content: "";
         display: block;
-        width: 243px;
+        width: 248px;
         height: 3px;
         background-color: map-get($colors, white);
         margin-top: -3px;
         margin-left: auto;
         margin-right: auto;
         transition: background-color .3s;
+    }
+}
+
+.nav.is-sticky {
+    position: fixed;
+    background-color: rgba(44, 43, 41, 0.8); //map-get($colors, dark);
+    font-size: 25px;
+
+    & > .container {
+        padding: 10px;
+    }
+
+    .highlight {
+        font-size: 25px;
+        margin-top: 0;
+        
+        &::after {
+            display: none;
+        }
+    }
+    
+    ul {
+        text-align: center;
+        line-height: 1;
+    }
+    
+    li {
+        display: inline-block;
+        float: none;
     }
 }
 
@@ -72,13 +102,32 @@
     width: 100%;
     z-index: 1000;
     display: none;
+    transition: all, $menu-push-transition-time, ease;
+    
+    &.is-sticky {
+        left: auto;
+        right: 0;
+        position: fixed;
+        
+        .mobile-menu-btn {
+            //box-sizing: content-box;
+            //padding: 0;
+            border-radius: 5px;
+            //border: 2px solid map-get($colors, primary);
+            background-color: map-get($colors, primary);
+            transition: background-color, .5s;
+            
+            &.nobg {
+                 background-color: transparent;
+            }
+        }
+        
+        &.active {
+            right: $menu-vertical-width;
+        }
+    }
 }
 
-$bar-height: 3px;
-$bar-margin: 9px;
-$bar-margin-hover: 11px;
-$hamburger-width: 40px;
-$hamburger-hover-time: .2s;
 .mobile-menu-btn {
     background-color: transparent;
     outline: none;
@@ -144,7 +193,7 @@ $hamburger-hover-time: .2s;
 
 @media screen and (max-width: $break-larger) {
     .nav {
-        font-size: 26px;
+        font-size: 1.625em;
         
         &  > .container {
             padding: 43px 0 0 22px;
@@ -163,8 +212,6 @@ $hamburger-hover-time: .2s;
     }
 }
 
-$menu-vertical-width: 240px;
-$menu-push-transition-time: .3s;
 @media screen and (max-width: $break-medium) {
     body {
         overflow-x: hidden;
@@ -207,6 +254,10 @@ $menu-push-transition-time: .3s;
         
         a {
              color: map-get($colors, timeline-header-text);
+            
+            &.current {
+                
+            }
         }
         
         .container {
@@ -219,4 +270,3 @@ $menu-push-transition-time: .3s;
         padding-top: 43px;
     }
 }
-

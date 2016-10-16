@@ -1397,33 +1397,10 @@ hr {
   text-rendering: optimizeLegibility;
 }
 
-html {
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-.clearfix:after,
-.clearfix:before {
-  content: " ";
-  display: table;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.clearfix {
-  clear: both;
-  *zoom: 1;
-}
-
 /* general */
 body {
   background-color: #fffcf4;
+  font-size: 16px;
 }
 
 a:focus {
@@ -1573,6 +1550,8 @@ section:nth-of-type(2n+2) {
   top: 0;
   left: 0;
   width: 100%;
+  -webkit-transition: background-color, .5s;
+  transition: background-color, .5s;
 }
 
 .nav ul {
@@ -1625,7 +1604,7 @@ section:nth-of-type(2n+2) {
 .nav .highlight::after {
   content: "";
   display: block;
-  width: 243px;
+  width: 248px;
   height: 3px;
   background-color: #fffcf4;
   margin-top: -3px;
@@ -1635,6 +1614,35 @@ section:nth-of-type(2n+2) {
   transition: background-color .3s;
 }
 
+.nav.is-sticky {
+  position: fixed;
+  background-color: rgba(44, 43, 41, 0.8);
+  font-size: 25px;
+}
+
+.nav.is-sticky > .container {
+  padding: 10px;
+}
+
+.nav.is-sticky .highlight {
+  font-size: 25px;
+  margin-top: 0;
+}
+
+.nav.is-sticky .highlight::after {
+  display: none;
+}
+
+.nav.is-sticky ul {
+  text-align: center;
+  line-height: 1;
+}
+
+.nav.is-sticky li {
+  display: inline-block;
+  float: none;
+}
+
 .mobile-menu {
   position: absolute;
   top: 0;
@@ -1642,6 +1650,29 @@ section:nth-of-type(2n+2) {
   width: 100%;
   z-index: 1000;
   display: none;
+  -webkit-transition: all, 0.3s, ease;
+  transition: all, 0.3s, ease;
+}
+
+.mobile-menu.is-sticky {
+  left: auto;
+  right: 0;
+  position: fixed;
+}
+
+.mobile-menu.is-sticky .mobile-menu-btn {
+  border-radius: 5px;
+  background-color: #f39c12;
+  -webkit-transition: background-color, .5s;
+  transition: background-color, .5s;
+}
+
+.mobile-menu.is-sticky .mobile-menu-btn.nobg {
+  background-color: transparent;
+}
+
+.mobile-menu.is-sticky.active {
+  right: 240px;
 }
 
 .mobile-menu-btn {
@@ -1715,7 +1746,7 @@ section:nth-of-type(2n+2) {
 
 @media screen and (max-width: 1200px) {
   .nav {
-    font-size: 26px;
+    font-size: 1.625em;
   }
   .nav > .container {
     padding: 43px 0 0 22px;
@@ -1811,12 +1842,12 @@ section:nth-of-type(2n+2) {
 }
 
 .header h2 {
-  font-size: 50px;
+  font-size: 3.125em;
   margin: 0;
 }
 
 .header h1 {
-  font-size: 48px;
+  font-size: 3em;
   margin: 0px 0 8px 0;
 }
 
@@ -1848,7 +1879,7 @@ section:nth-of-type(2n+2) {
 
 @media screen and (max-width: 1120px) {
   .header h2 {
-    font-size: 40px;
+    font-size: 2.5em;
   }
   .logo:after {
     right: 58px;
@@ -1887,7 +1918,7 @@ section:nth-of-type(2n+2) {
 
 .about-text p {
   color: #757471;
-  font: 300 24px Lato, Arial, sans-serif;
+  font: 300 1.5em Lato, Arial, sans-serif;
 }
 
 /* skills */
@@ -1951,7 +1982,7 @@ section:nth-of-type(2n+2) {
 }
 
 .chart-box h3 {
-  font: 400 31px Lato, Arial, sans-serif;
+  font: 400 1.938em Lato, Arial, sans-serif;
   color: #fffcf4;
   text-transform: uppercase;
   margin-top: 21px;
@@ -1959,7 +1990,7 @@ section:nth-of-type(2n+2) {
 }
 
 .chart-box p {
-  font: 300 16px "Open Sans", Arial, sans-serif;
+  font: 300 1em "Open Sans", Arial, sans-serif;
   color: #fffcf4;
   margin: 0;
   line-height: 1.3;
@@ -2085,9 +2116,18 @@ section:nth-of-type(2n+2) {
 }
 
 .progress-ring span {
-  font: 300 55px Lato, Arial, sans-serif;
+  font: 300 3.438em Lato, Arial, sans-serif;
   color: #fffcf4;
   line-height: 232px;
+}
+
+@media screen and (max-width: 991px) {
+  .chart-box {
+    margin-bottom: 40px;
+  }
+  .chart-box:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 /* experience */
@@ -2135,7 +2175,7 @@ section:nth-of-type(2n+2) {
   line-height: 66px;
   font-family: Roboto, Arial, sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 2.5em;
   text-transform: uppercase;
   color: #6e6e6e;
   background-color: #cfcdc6;
@@ -2209,7 +2249,7 @@ section:nth-of-type(2n+2) {
 
 .timeline article .title {
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 30px;
+  font-size: 1.875em;
   font-weight: 600;
   line-height: 1;
   margin: 0 0 2px;
@@ -2217,14 +2257,14 @@ section:nth-of-type(2n+2) {
 
 .timeline article .subtitle {
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 22px;
+  font-size: 1.375em;
   font-weight: 400;
   margin: 0 0 2px;
 }
 
 .timeline article .peroid {
   font-family: "Open Sans", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 300;
   display: block;
   margin: 0 0 13px;
@@ -2233,7 +2273,7 @@ section:nth-of-type(2n+2) {
 
 .timeline article p:last-of-type {
   font-family: Lato, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 300;
   margin: 0;
 }
@@ -2414,7 +2454,7 @@ section:nth-of-type(2n+2) {
 
 .portfolio-slider p {
   font-family: Lato, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   padding: 0 15px 41px 15px;
   margin: 0;
 }
@@ -2548,5 +2588,5 @@ section:nth-of-type(2n+2) {
 }
 
 .footer small {
-  font-size: 21px;
+  font-size: 1.313em;
 }
