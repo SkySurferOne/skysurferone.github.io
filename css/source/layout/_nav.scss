@@ -1,131 +1,121 @@
 /* navigation */
 .nav {
-    font: 500 30px $Roboto;
+    font: 300 30px $Roboto;
     position: absolute;
-    z-index: 1000;
     top: 0;
     left: 0;
+    z-index: 1000;
     width: 100%;
-    transition: background-color, .5s;
-    
+    transition: top 0.2s ease-in-out;
+
     ul {
         display: block;
         list-style: none;
         padding: 0;
         margin: 0;
     }
-    
+
     li {
         display: block;
         float: left;
         margin-right: 37px;
+
         &:last-child {
             margin-right: 0;
         }
     }
-    
+
     a {
         color: map-get($colors, white);
         display: block;
         text-transform: uppercase;
         letter-spacing: 3px;
         line-height: 1;
-        transition: color .3s;
+
         &:hover {
             text-decoration: none;
             color: map-get($colors, primary);
         }
+
+        &:focus {
+          text-decoration: none;
+        }
     }
-    
+
+    &.is-sticky {
+      position: fixed;
+      background-color: map-get($colors, white);
+      box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
+
+      a {
+        color: map-get($colors, text-about);
+        line-height: 55px;
+
+        &.current {
+          color: map-get($colors, primary);
+        }
+
+        &:hover {
+          color: map-get($colors, primary);
+        }
+      }
+
+      > .container {
+        padding: 0 20px;
+      }
+    }
+
+    .navbar-brand {
+      display: none;
+    }
+
 }
 
 .nav > .container {
-    padding: 43px 0 0 38px;
+    padding: 43px 0 0 52px;
 }
 
-.nav .highlight {
-    font-size: 36px;
-    margin-top: -5px;
-    letter-spacing: 4px;
-    position: relative;
-    
-    &:hover::after {
-        background-color: map-get($colors, primary);
-    }
-    
-    &::after {
-        content: "";
-        display: block;
-        width: 248px;
-        height: 3px;
-        background-color: map-get($colors, white);
-        margin-top: -3px;
-        margin-left: auto;
-        margin-right: auto;
-        transition: background-color .3s;
+// Medium devices
+@media screen and (max-width: $screen-md-max) {
+    .nav {
+      font-size: 1.625em;
+
+      & > .container {
+          padding: 43px 0 0 22px;
+      }
+
+      li {
+          margin-right: 30px;
+      }
     }
 }
 
-.nav.is-sticky {
-    position: fixed;
-    background-color: rgba(44, 43, 41, 0.8); //map-get($colors, dark);
-    font-size: 25px;
+// Small devices
+@media screen and (max-width: $screen-sm-max) {
+    .nav {
+      font-size: 1.2em;
 
-    & > .container {
-        padding: 10px;
-    }
+      &  > .container {
+          padding: 43px 0 0 22px;
+      }
 
-    .highlight {
-        font-size: 25px;
-        margin-top: 0;
-        
-        &::after {
-            display: none;
-        }
-    }
-    
-    ul {
-        text-align: center;
-        line-height: 1;
-    }
-    
-    li {
-        display: inline-block;
-        float: none;
+      li {
+          margin-right: 20px;
+      }
     }
 }
 
+// Extra small devices
 .mobile-menu {
-    position: absolute;
-    top: 0;
-    left: 0;
+  display: none;
+}
+
+/* mobile-menu component */
+.mobile-menu {
+    position: relative;
     width: 100%;
     z-index: 1000;
     display: none;
-    transition: all, $menu-push-transition-time, ease;
-    
-    &.is-sticky {
-        left: auto;
-        right: 0;
-        position: fixed;
-        
-        .mobile-menu-btn {
-            //box-sizing: content-box;
-            //padding: 0;
-            border-radius: 5px;
-            //border: 2px solid map-get($colors, primary);
-            background-color: map-get($colors, primary);
-            transition: background-color, .5s;
-            
-            &.nobg {
-                 background-color: transparent;
-            }
-        }
-        
-        &.active {
-            right: $menu-vertical-width;
-        }
-    }
 }
 
 .mobile-menu-btn {
@@ -136,7 +126,7 @@
     height: $hamburger-width;
     width: $hamburger-width;
     position: relative;
-    
+
     span {
         background-color: map-get($colors, white);
         height: $bar-height;
@@ -145,7 +135,7 @@
         top: 50%;
         transform: translate(0, -50%);
         width: $hamburger-width;
-        
+
             &::after,
             &::before {
                 content: "";
@@ -154,7 +144,9 @@
                 left: 0;
                 position: absolute;
                 width: $hamburger-width;
-                transition: bottom $hamburger-hover-time, top $hamburger-hover-time, transform $hamburger-hover-time;
+                transition: bottom $hamburger-hover-time,
+                            top $hamburger-hover-time,
+                            transform $hamburger-hover-time;
             }
 
             &::after {
@@ -165,18 +157,18 @@
                 top: -$bar-margin;
             }
     }
-    
+
     &:hover span {
         &::after {
             bottom: -$bar-margin-hover;
         }
-        
+
         &::before {
             top: -$bar-margin-hover;
         }
     }
-    
-     &.active span {
+
+    &.active span {
         width: 0;
 
         &::after {
@@ -187,86 +179,98 @@
         &::before {
             top: 0;
             transform: rotateZ(45deg);
-        }   
-    }
-}
-
-@media screen and (max-width: $break-larger) {
-    .nav {
-        font-size: 1.625em;
-        
-        &  > .container {
-            padding: 43px 0 0 22px;
-        }
-        
-        .highlight {
-            font-size: inherit;
-            &::after {
-                width: 187px;
-            }
-        }
-        
-        li {
-            margin-right: 30px;
         }
     }
 }
+/* mobile-menu component end */
 
-@media screen and (max-width: $break-medium) {
-    body {
-        overflow-x: hidden;
-	    position: relative;
-	    left: 0;
-        transition: all, $menu-push-transition-time, ease;
+.nav-collapse,
+.mobile-menu {
+  &:before, &:after {
+    display: table;
+    content: " ";
+  }
+}
+
+@media screen and (max-width: $screen-xs-max) {
+  .nav {
+    font-size: 1.8em;
+
+    &  > .container {
+        padding: 22px 38px 0 0;
     }
-    
-    .push-toleft {
-	    left: -$menu-vertical-width;
+
+    ul {
+      padding-top: 10px;
     }
-    
-    .nav {
-        background: map-get($colors, white);
-        width: $menu-vertical-width;
-        position: fixed;
-        height: 100%;
-        top: 0;
-        left: auto;
-        right: -$menu-vertical-width;
-        z-index: 1001;
-        transition: right, $menu-push-transition-time, ease;
 
-        &.open {
-            right: 0px;
+    .nav-collapse {
+      display: none;
+      position: absolute;
+      width: 100%;
+
+      li {
+        float: none;
+        margin: 0 0 10px 0;
+        //padding: 3px;
+      }
+
+      a {
+        text-align: center;
+      }
+    }
+
+    .nav-collapse.in {
+      display: block;
+    }
+
+    &.is-sticky {
+        background-color: map-get($colors, white);
+        //box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
+
+        .navbar-brand {
+            display: block;
         }
 
-        li {
-            float: none;
-            margin-bottom: 8px;
-            margin-right: 0;
-        }
-
-        .highlight {
-            margin-top: 0;
-            &::after {
-                display: none;
-            }
-        }
-        
-        a {
-             color: map-get($colors, timeline-header-text);
-            
-            &.current {
-                
-            }
-        }
-        
         .container {
-            width: auto;
+            padding: 0;
+        }
+
+        .navbar-brand {
+            padding: 12px 15px;
+        }
+
+        .nav-collapse {
+            background-color: map-get($colors, white);
+        }
+
+        .mobile-menu-btn {
+            margin-top: 8px;
+            margin-right: 15px;
+            margin-bottom: 8px;
+        }
+
+        .mobile-menu-btn span {
+            background-color: map-get($colors, primary);
+
+            &::before,
+            &::after {
+                background-color: map-get($colors, primary);
+            }
+        }
+
+        a {
+            color: map-get($colors, text-about);
+            line-height: 1;
+
+            &:hover {
+              color: map-get($colors, primary);
+            }
         }
     }
-    
-    .mobile-menu {
-        display: block;
-        padding-top: 43px;
-    }
+  }
+
+  .mobile-menu {
+    display: block;
+  }
 }

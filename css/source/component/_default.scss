@@ -10,6 +10,10 @@ body {
     font-size: $baseFontSize;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 a:focus {
     text-decoration: none;
 }

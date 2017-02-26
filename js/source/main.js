@@ -1,43 +1,57 @@
+/**
+    File name: app.js
+    Author: DH
+    Description: Script implements navigation behavior,
+    events on scrolling ect.
+
+    init : Initializes app script.
+           Should be invoked in onload/ready event handler.
+*/
 var app = (function($){
 	'use strict';
-    //========== cache DOM
+
+	//========== cache DOM
     var $document = $(document),
-        // my skills slider 
+    	// toggle menu button
+     	$mobileMenuBtn = $('.mobile-menu-btn'),
+    	// navigation list
+    	$navCollapse = $('.nav-collapse'),
+        // about section
+        $aboutSection = $('section:nth-of-type(1)'),
+        // navigation
+        $navigation = $('.nav'),
+        // navigation links
+        $navLinks = $('.nav ul a'),
+        // page sections
+        $sections = $('.header, section'),
+        // body
+        $body = $('html, body'),
+        // my skills slider
         $sliderSkills = $('.skills-slider'),
         // portfolio slider
         $sliderPortfolio = $('.portfolio-slider'),
-        // navigation
-        $menu = $('.nav'),
-        // mobile-menu
-        $mobileMenu = $('.mobile-menu'),
-        // toggle menu button
-        $toggleMenuBtn = $('.mobile-menu-btn'),
-        // body
-        $body = $('html, body'),
-        // page sections
-        $sections = $('.header, section'),
-        // second section
-        $secondSection = $('section:nth-of-type(1)'),
-        // navigation links
-        $navLinks = $('.nav a'),
         // bxslider portfiolio object
         $bxSliderPortfolio = null;
-    
-    //========== configuration 
-    // general config 
+
+    //========== app config
+    // general config
     var config = {
+        navSlideSpeed : 250, // in ms
         menuOpen : false,
-        currentLink : 0
-    };
-    
+        currentLink : 0,
+				lastScrollTop: 0,
+				hideDelta: 5,
+				autohideNavOffset: $($sections[0]).outerHeight()
+    }
+
     // smooth scrolling config
     var smoothScrollingConfig = {
         // the body animation speed
         animSpeed : 1000,
-        // the body animation easing (jquery easing)
-		animEasing : 'swing' //'easeInOutExpo'
+        // the body animation easing (jquery easing plugin)
+        animEasing : 'swing' //'easeInOutExpo'
     };
-    
+
     // sliders config
     var sliderSkillsConfig = {
         // autorun
@@ -47,13 +61,13 @@ var app = (function($){
         // control arrows
         controls: false,
     };
-    
+
     var sliderPortfolioConfig = {
-        // slide width 
+        // slide width
         slideWidth: 475,
-        // min abount of slides 
+        // min abount of slides
         minSlides: 2,
-        // max abount of slides 
+        // max abount of slides
         maxSlides: 2,
         // number of moving slides
         moveSlides: 1,
@@ -64,31 +78,33 @@ var app = (function($){
         // autorun
         auto: true
     };
-    
+
     //========== app functions
-    //initialize function
+    // initialize function
     function init() {
-        // bind events 
-        $toggleMenuBtn.click(toggleMenu);
+    	// bind events
+    	$mobileMenuBtn.click(toggleMenu);
         $navLinks.click(onNavLinkClick);
         $(window).scroll(onScroll);
         $(window).resize(onResize);
-        $(window).on( 'debouncedresize', debouncedResize);
-        
+        //$(window).on( 'debouncedresize', debouncedResize);
+
         // sliders
         $sliderSkills.bxSlider(sliderSkillsConfig);
         $bxSliderPortfolio = $sliderPortfolio.bxSlider(sliderPortfolioConfig);
     }
-    
-    // action after toggle menu
+
+    // actions after toggle menu
     function toggleMenu() {
         config.menuOpen = !config.menuOpen;
-        $mobileMenu.toggleClass( 'active' );
-        $toggleMenuBtn.toggleClass( 'active' );
-        $body.toggleClass( 'push-toleft' );
-        $menu.toggleClass( 'open' );
+    	$mobileMenuBtn.toggleClass('active');
+        ($navCollapse.hasClass('in')) ?
+            $navCollapse.slideUp(config.navSlideSpeed)
+        :
+            $navCollapse.slideDown(config.navSlideSpeed);
+        $navCollapse.toggleClass('in');
     }
-    
+
     // on navigation link click
     function onNavLinkClick() {
         var indexOfAnchor = $( this ).parent().index();
@@ -96,27 +112,45 @@ var app = (function($){
         scrollToSection(indexOfAnchor);
         return false;
     }
-    
+
+    // changes current navigation
+    function changeNav(indexOfAnchor) {
+        $navLinks.eq(config.currentLink).removeClass('current');
+        config.currentLink = indexOfAnchor;
+        $navLinks.eq(config.currentLink).addClass('current');
+    }
+
     // scroll to some section
     function scrollToSection(indexOfSection) {
         var offset = (indexOfSection % 2 === 0 && indexOfSection !== 0) ?
-            250 : 0;
+                     250 : 0;
         scrollAnim( $sections.eq( indexOfSection ).offset().top, offset );
     }
-    
-    // scroll animation 
+
+    // scroll animation
     function scrollAnim( top, offset ) {
         offset = offset || 0;
-		$body.stop().animate( { scrollTop : top + offset }, 
-                             smoothScrollingConfig.animSpeed, 
+        $body.stop().animate( { scrollTop : top + offset },
+                             smoothScrollingConfig.animSpeed,
                              smoothScrollingConfig.animEasing );
-	}
-    
+    }
+
+    // on scroll event
+    function onScroll() {
+         if(config.menuOpen) {
+             toggleMenu();
+         }
+
+				 hideOrShowNavOnScroll();
+    }
+
     // on resize event
     function onResize() {
-        if(config.menuOpen) toggleMenu();
-        if( window.innerWidth <= 991 ) { 
-            $menu.removeClass('is-sticky');
+        if(!config.menuOpen && window.innerWidth > 767) {
+            $navCollapse.css('display', '');
+        }
+
+        if( window.innerWidth <= 991 ) {
             $bxSliderPortfolio.reloadSlider({
                 slideWidth: 475,
                 minSlides: 1,
@@ -126,85 +160,82 @@ var app = (function($){
                 pager: false,
                 auto: true
               });
+
         } else {
             $bxSliderPortfolio.reloadSlider(sliderPortfolioConfig);
         }
-        
-        if( window.innerWidth > 991 && $(window).scrollTop() >= $secondSection.offset().top)
-            $menu.addClass('is-sticky');
     }
-    
-    // on scroll event
-    function onScroll() {
-         if(config.menuOpen) toggleMenu();
-    }
-    
+
     // smoothly scroll to current section after window resize
     function debouncedResize() {
         scrollToSection(config.currentLink);
-    } 
-    
-    // changes current navigation
-    function changeNav(indexOfAnchor) {
-        $navLinks.eq(config.currentLink).removeClass('current');
-        config.currentLink = indexOfAnchor;
-        $navLinks.eq(config.currentLink).addClass('current');
     }
-    
-    // detect current section
-    $sections.waypoint(function( direction ) {
-        if( direction === 'down' ) { 
-            var ind = $( this.element ).index('header, section');
-            changeNav( ind ); 
+
+		function hideOrShowNavOnScroll() {
+			var currentScrollTop = $(window).scrollTop();
+
+			if(Math.abs(config.lastScrollTop - currentScrollTop) <= config.hideDelta)
+        return;
+
+				if (currentScrollTop > config.lastScrollTop &&
+						currentScrollTop > config.autohideNavOffset){
+					// on scroll down
+					$navigation.css({
+						"top": -$navigation.outerHeight()
+					});
+
+				} else {
+					// on scroll up
+					if(currentScrollTop + $(window).height() < $(document).height()) {
+							$navigation.css({
+								"top": 0
+							});
+
+					}
+				}
+
+			config.lastScrollTop = currentScrollTop;
+		}
+
+    // sticky navigation
+    $aboutSection.waypoint({
+        handler: function(direction) {
+            if( direction === 'down' ) {
+                $navigation.addClass('is-sticky');
+
+            } else if(direction === 'up') {
+                $navigation.removeClass('is-sticky');
+
+            }
         }
-    }, { 
-        offset: '30%'
     });
 
-    $sections.waypoint(function( direction ) {
-        if( direction === 'up' ) { 
-            var ind = $( this.element ).index('header, section');
-            changeNav( ind ); 
-        }
-    }, { 
-        offset: '-30%'
-    });
-    
-    $sections.waypoint(function( direction ) {
-        var ind = $( this.element ).index('header, section');
-        if(direction === 'down') {
-            if(ind % 2 === 0)
-                $toggleMenuBtn.addClass("nobg");
-            else 
-                $toggleMenuBtn.removeClass("nobg");
-        } else {
-            if(ind % 2 === 1)
-                $toggleMenuBtn.addClass("nobg");
-            else 
-                $toggleMenuBtn.removeClass("nobg");
-        }
-    });
-    
-    // sticky navigation
-    $secondSection.waypoint({
-			handler: function(direction) {
+		// detect current section
+		$sections.waypoint(function( direction ) {
 				if( direction === 'down' ) {
-					$mobileMenu.addClass('is-sticky');
-					if( window.innerWidth > 991 ) $menu.addClass('is-sticky');
-                    
-				} else if(direction === 'up') {
-					$mobileMenu.removeClass('is-sticky');
-                    if( window.innerWidth > 991 ) $menu.removeClass('is-sticky');
-                    
-				}	
-			}
-    });
-    
+						var ind = $( this.element ).index('header, section');
+						changeNav( ind );
+				}
+		}, {
+				offset: '30%'
+		});
+
+		$sections.waypoint(function( direction ) {
+				if( direction === 'up' ) {
+						var ind = $( this.element ).index('header, section');
+						changeNav( ind );
+				}
+		}, {
+				offset: '-30%'
+		});
+
     return {
-        init : init 
+    	init : init
     };
+
 })(jQuery);
 
+// main.js
 (function($) {
 	$(document).ready(function() {
 		app.init();
