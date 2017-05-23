@@ -42,7 +42,7 @@ var app = (function($){
 				lastScrollTop: 0,
 				hideDelta: 5,
 				autohideNavOffset: $($sections[0]).outerHeight()
-    }
+    };
 
     // smooth scrolling config
     var smoothScrollingConfig = {
@@ -97,10 +97,10 @@ var app = (function($){
     // actions after toggle menu
     function toggleMenu() {
         config.menuOpen = !config.menuOpen;
-    	$mobileMenuBtn.toggleClass('active');
-        ($navCollapse.hasClass('in')) ?
-            $navCollapse.slideUp(config.navSlideSpeed)
-        :
+    		$mobileMenuBtn.toggleClass('active');
+        if ($navCollapse.hasClass('in'))
+            $navCollapse.slideUp(config.navSlideSpeed);
+        else
             $navCollapse.slideDown(config.navSlideSpeed);
         $navCollapse.toggleClass('in');
     }

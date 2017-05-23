@@ -54,7 +54,7 @@ gulp.task('sass-prod', function() {
     return gulp.src('css/source/*.scss')
 		.pipe(sass({ outputStyle: 'expanded' }))
 		.pipe(autoprefixer())
-		.pipe(cmq({ log: false }))
+		//.pipe(cmq({ log: false }))
 		.pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(gulp.dest('css'));
 
@@ -110,5 +110,6 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['jsLint', 'sass-prod', 'scripts']);
+gulp.task('serve', ['default', 'browser-sync']);
 gulp.task('dev', ['jsLint', 'sass', 'scripts', 'watch']);
 gulp.task('dev-serve', ['dev', 'browser-sync']);

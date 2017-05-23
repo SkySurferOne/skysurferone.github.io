@@ -6,6 +6,11 @@
   "author": "Damian Hanusiak",
   "license": "UNLICENSED",
   "copyright": "2016",
+  "scripts": {
+    "build": "gulp",
+    "serve": "gulp serve",
+    "dev-serve": "gulp dev-serve"
+  },
   "devDependencies": {
     "browser-sync": "^2.13.0",
     "gulp": "^3.9.1",
