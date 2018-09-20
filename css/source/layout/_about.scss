@@ -8,8 +8,7 @@
     img {
         margin-left: auto;
         margin-right: auto;
-    }
-    
+    }   
 }
 
 .about-text {
@@ -30,5 +29,13 @@
     p {
         color: map-get($colors, text-about);
         font: 300 1.5em $Lato;
+    }
+}
+
+@media screen and (max-width: $screen-md-max) {
+    .img-wrap {
+        img {
+            max-height: 350px;
+        }   
     }
 }

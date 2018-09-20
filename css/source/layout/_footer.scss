@@ -12,3 +12,24 @@
         font-size: 1.313em;
     }
 }
+
+@media screen and (max-width: $screen-xs-max) {
+    .footer {
+        small {
+            font-size: 1em;
+        }
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .footer {
+        small {
+            display: block;
+        }
+
+        small:last-of-type {
+            margin-top: 10px;
+            float: none !important;
+        }
+    }
+}

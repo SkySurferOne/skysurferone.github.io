@@ -14,4 +14,9 @@
         color: map-get($colors, dark);
         background-color: map-get($colors, primary);
     }
+
+    &:focus,
+    &:active {
+        color: map-get($colors, primary);
+    }
 }

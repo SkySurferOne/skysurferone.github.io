@@ -15,6 +15,7 @@
         top: 34%;
         transform: translate(-50%, 0);
         text-align: center;
+        width: 100%;
     }
     
     h1, 
@@ -24,6 +25,7 @@
         color: map-get($colors, white);
         text-transform: uppercase;
         line-height: 1.2;
+        padding: 0 10px;
     }
     
     h2 {
@@ -54,10 +56,12 @@
         transform: translate(0, -50%);
     }
     &:before {
-       left: 115px;
+        left: 50%;
+        transform: translate(-135%, -50%);
     }
     &:after {
-       right: 115px;
+        right: 50%;
+        transform: translate(135%, -50%);
     }
 }
 
@@ -67,13 +71,35 @@
             font-size: 2.5em;
         }
     }
-    
-    .logo {
-        &:after {
-            right: 58px;
+}
+
+@media screen and (max-width: 898px) {
+    .header {
+        h1 {
+            font-size: 2em;
         }
+
+        h2 {
+            font-size: 2.4em;
+        }
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .header {
+        h1 {
+            font-size: 1.7em;
+        }
+
+        h2 {
+            font-size: 1.9em;
+        }
+    }
+
+    .logo {
+        &:after,
         &:before {
-            left: 58px;
+            display: none;
         }
     }
 }
