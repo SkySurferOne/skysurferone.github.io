@@ -1,24 +1,19 @@
 // Includes
-var gulp  = require('gulp');
-
-var jshint = require('gulp-jshint');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
-var cmq = require('gulp-combine-media-queries');
-
-var minifyCss = require('gulp-clean-css');
-
-var rename = require('gulp-rename');
-var merge = require('merge-stream');
-
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const jshint = require('gulp-jshint');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+const cmq = require('gulp-combine-media-queries');
+const minifyCss = require('gulp-clean-css');
+const rename = require('gulp-rename');
+const merge = require('merge-stream');
+const browserSync = require('browser-sync').create();
 
 // Config
-var project = {};
+const project = {};
 project.jsSourcePath = 'js/source/';
 project.jsVendorPath = project.jsSourcePath + 'vendor/';
 project.jsVendor = [
@@ -105,11 +100,11 @@ gulp.task('browser-sync', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-	 gulp.watch(project.jsSourcePath + '*.js', ['jsLint', 'scripts-dev']);
-	 gulp.watch('css/source/**/*.scss', ['sass']);
+	 gulp.watch(project.jsSourcePath + '*.js', gulp.series('jsLint', 'scripts-dev'));
+	 gulp.watch('css/source/**/*.scss', gulp.series('sass'));
 });
 
-gulp.task('default', ['jsLint', 'sass-prod', 'scripts']);
-gulp.task('serve', ['default', 'browser-sync']);
-gulp.task('dev', ['jsLint', 'sass', 'scripts', 'watch']);
-gulp.task('dev-serve', ['dev', 'browser-sync']);
+gulp.task('default', gulp.series('jsLint', 'sass-prod', 'scripts'));
+gulp.task('serve', gulp.series('default', 'browser-sync'));
+gulp.task('dev', gulp.series('jsLint', 'sass', 'scripts', 'watch'));
+gulp.task('dev-serve', gulp.series('dev', 'browser-sync'));
